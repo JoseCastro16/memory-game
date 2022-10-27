@@ -1,16 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Card from "./Card";
+import Board from "./Board";
 
 function App() {
-  const cardValues = ["card1", "card2"];
-  return (
-    <div className="App">
-      {cardValues.map((item, index) => (
-        <Card key={index} cardId={item} />
-      ))}
-    </div>
-  );
+  const cardValues = ["card1", "card1"];
+  return <Board />;
 }
 
 export default App;

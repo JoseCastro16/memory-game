@@ -22,6 +22,10 @@ class Board extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.shuffleCards();
+  }
+
   componentDidUpdate() {
     if (this.state.guessOne && this.state.guessTwo) {
       if (this.state.guessOne.text === this.state.guessTwo.text) {

@@ -33,6 +33,24 @@ class Board extends React.Component {
     });
   };
 
+  handleGuess = (card) => {
+    if (this.state.guessOne && this.state.guessTwo) {
+      return;
+    }
+
+    this.state.guessOne
+      ? this.setState({ guessTwo: card })
+      : this.setState({ guessOne: card });
+  };
+
+  resetTurn = () => {
+    this.setState((prevState) => ({
+      guessOne: null,
+      guessTwo: null,
+      turns: prevState.turns + 1,
+    }));
+  };
+
   render() {
     return (
       <div className="Container">
@@ -52,7 +70,6 @@ class Board extends React.Component {
             />
           ))}
         </div>
-
         <h2>Turns: {this.state.turns}</h2>
       </div>
     );

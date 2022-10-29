@@ -9,6 +9,7 @@ class Card extends React.Component {
 
   handleClick = () => {
     this.setState((state) => ({ isFlipped: !state.isFlipped }));
+    this.props.handleGuess(this.props.card);
   };
 
   render() {

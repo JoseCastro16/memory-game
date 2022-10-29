@@ -4,11 +4,11 @@ import Card from "./Card";
 
 const staticCards = [
   { text: "1", matched: false },
-  { text: "2", matched: false },
   { text: "3", matched: false },
+  { text: "6", matched: false },
   { text: "4", matched: false },
   { text: "5", matched: false },
-  { text: "6", matched: false },
+  { text: "2", matched: false },
 ];
 
 class Board extends React.Component {

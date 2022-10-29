@@ -8,20 +8,21 @@ class Card extends React.Component {
   }
 
   handleClick = () => {
-    this.setState((state) => ({ isFlipped: !state.isFlipped }));
     this.props.handleGuess(this.props.card);
   };
 
   render() {
-    if (this.state.isFlipped === false) {
+    if (this.props.flipped === false) {
       return <div className="back" onClick={this.handleClick}></div>;
     }
 
-    return (
-      <div className="front" onClick={this.handleClick}>
-        {this.props.card.text}
-      </div>
-    );
+    if (this.props.flipped === true) {
+      return (
+        <div className="front" onClick={this.handleClick}>
+          {this.props.card.text}
+        </div>
+      );
+    }
   }
 }
 

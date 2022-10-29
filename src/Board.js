@@ -16,8 +16,27 @@ class Board extends React.Component {
     super(props);
     this.state = {
       cards: [],
+      guessOne: null,
+      guessTwo: null,
       turns: 0,
     };
+  }
+
+  componentDidUpdate() {
+    if (this.state.guessOne && this.state.guessTwo) {
+      if (this.state.guessOne.text === this.state.guessTwo.text) {
+        this.setState((prevState) => ({
+          cards: prevState.cards.map((card) => {
+            if (card.text === this.state.guessOne.text)
+              return { ...card, matched: true };
+            else return card;
+          }),
+        }));
+        this.resetTurn();
+      } else {
+        setTimeout(() => this.resetTurn(), 1500);
+      }
+    }
   }
 
   shuffleCards = () => {

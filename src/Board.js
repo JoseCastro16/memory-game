@@ -1,5 +1,6 @@
 import React from "react";
 import "./Board.css";
+import Card from "./Card";
 
 const staticCards = [
   { text: "1", matched: false },
@@ -19,11 +20,39 @@ class Board extends React.Component {
     };
   }
 
+  shuffleCards = () => {
+    const shuffledDeck = [...staticCards, ...staticCards]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, key: Math.random() }));
+    console.log(shuffledDeck);
+    this.setState({
+      cards: shuffledDeck,
+      turns: 0,
+      guessOne: null,
+      guessTwo: null,
+    });
+  };
+
   render() {
     return (
       <div className="Container">
         <h1>Memory Game</h1>
         <button onClick={this.shuffleCards}>New Game</button>
+        <div className="Board">
+          {this.state.cards.map((card) => (
+            <Card
+              key={card.key}
+              card={card}
+              handleGuess={this.handleGuess}
+              flipped={
+                card === this.state.guessOne ||
+                card === this.state.guessTwo ||
+                card.matched
+              }
+            />
+          ))}
+        </div>
+
         <h2>Turns: {this.state.turns}</h2>
       </div>
     );

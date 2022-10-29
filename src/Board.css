@@ -1,5 +1,4 @@
-.Board {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
+.Container {
+  max-width: 860px;
+  margin: 40px auto;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Card.css";
 
 class Card extends React.Component {
   constructor(props) {
@@ -8,36 +9,16 @@ class Card extends React.Component {
 
   handleClick = () => {
     this.setState((state) => ({ isFlipped: !state.isFlipped }));
-    this.props.handleGuess(this.props.cardText);
   };
 
   render() {
     if (this.state.isFlipped === false) {
-      return (
-        <div
-          style={{
-            height: "100px",
-            width: "75px",
-            backgroundColor: "black",
-            borderStyle: "solid",
-            borderColor: "red",
-          }}
-          onClick={this.handleClick}
-        ></div>
-      );
+      return <div className="back" onClick={this.handleClick}></div>;
     }
+
     return (
-      <div
-        style={{
-          height: "100px",
-          width: "75px",
-          backgroundColor: "lightblue",
-          borderStyle: "solid",
-          borderColor: "red",
-        }}
-        onClick={this.handleClick}
-      >
-        {this.props.cardText}
+      <div className="front" onClick={this.handleClick}>
+        {this.props.card.text}
       </div>
     );
   }
